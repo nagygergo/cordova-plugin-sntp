@@ -29,7 +29,12 @@ public class CDVPluginSntp extends CordovaPlugin {
         } else if(action == "getClockOffset") {
             getClockOffset(callbackContext);
             return true;
+        } else {
+            callbackContext.error(pluginName + ": Method '" + action + "' not supported.");
+            return false;
         }
+
+        return true;
     }
 
     /**
