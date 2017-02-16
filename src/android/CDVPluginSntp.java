@@ -17,22 +17,19 @@ public class CDVPluginSntp extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        switch (action) {
-            case "setServer":
-                server = args.getString(0);
-                timeout = args.getInt(1);
-                callbackContext.success();
-                return true;
+        if(action == "setServer") {
 
-            case "getTime":
-                getTime(callbackContext);
-                return true;
-
-            case "getClockOffset":
-                getClockOffset(callbackContext);
-                return true;
+            server = args.getString(0);
+            timeout = args.getInt(1);
+            callbackContext.success();
+            return true;
+        } else if(action == "getTime") {
+            getTime(callbackContext);
+            return true;
+        } else if(action == "getClockOffset") {
+            getClockOffset(callbackContext);
+            return true;
         }
-        return false;
     }
 
     /**
