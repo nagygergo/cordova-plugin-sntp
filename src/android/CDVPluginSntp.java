@@ -17,20 +17,20 @@ public class CDVPluginSntp extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if(action == "setServer") {
+        if("setServer".equals(action)) {
 
             server = args.getString(0);
             timeout = args.getInt(1);
             callbackContext.success();
             return true;
-        } else if(action == "getTime") {
+        } else if("getTime".equals(action)) {
             getTime(callbackContext);
             return true;
-        } else if(action == "getClockOffset") {
+        } else if("getClockOffset".equals(action)) {
             getClockOffset(callbackContext);
             return true;
         } else {
-            callbackContext.error("Method '" + action + "' not supported.");
+            callbackContext.error("Method '" + action == null ? "null" : action + "' not supported.");
             return false;
         }
     }
