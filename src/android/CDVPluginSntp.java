@@ -33,8 +33,6 @@ public class CDVPluginSntp extends CordovaPlugin {
             callbackContext.error("Method '" + action + "' not supported.");
             return false;
         }
-
-        return true;
     }
 
     /**
